@@ -1,6 +1,0 @@
-constraints: any.base ==4.13.0.0,
-             any.ghc-prim ==0.5.3,
-             any.integer-gmp ==1.0.2.0,
-             any.mtl ==2.2.2,
-             any.rts ==1.0,
-             any.transformers ==0.5.6.2
