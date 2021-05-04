@@ -9,11 +9,8 @@ type Player = XO
 type Space = Maybe XO
 
 type Board = [Space]
-
 type Pos = Int
-
 type PlayerChoice = (Player,Pos)
-
 type GameState = Board 
 
 initState :: Board
@@ -40,8 +37,6 @@ makeMove g c
 printB :: Board -> IO()
 printB [] = print ""
 printB b  = print (take 3 b) >>= \_ -> printB  (drop 3 b)
-
-
 
 gameLoop :: Board -> Player -> IO()
 gameLoop st pl 
@@ -73,7 +68,7 @@ gameLoop st pl
     draw :: Board -> Bool
     draw x = foldl1 (&&) (fmap (\z -> z /= Nothing) x)
         
-    -- Probably should have made a nicer function but I like this
+    -- Probably should have made a nicer function but I like it this way
     won :: Board -> Bool
     won (a : b : c :
          d : e : f :
@@ -87,8 +82,6 @@ gameLoop st pl
       | b == e && e == h && h /= Nothing = True -- c2
       | c == f && f == i && i /= Nothing = True -- c3
       | otherwise                        = False
-        
-
 
 play :: IO()
 play =
