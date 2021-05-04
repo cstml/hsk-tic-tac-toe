@@ -2,6 +2,11 @@ module TicTacToe
   ( play )
 where
 
+maybeRead :: Read a => String -> Maybe a
+maybeRead s = case reads s of
+                [(x,"")] -> Just x
+                _        -> Nothing
+
 data XO = X | O  deriving (Show,Eq)
 
 type Player = XO
@@ -46,11 +51,14 @@ gameLoop st pl
       print "Current State" >> printB st >>
       print ("Player " ++ show pl ++ " to go!") >>
       getLine >>= \inp ->
-      return (read inp::Int) >>= \pInp ->
+      return (maybe 0 r  (maybeRead inp)::Int) >>= \pInp ->
       case isValid pInp of
         True -> gameLoop (aux pInp pl st) otP
         _    -> print "Bad Input \n Try again! with a number from 1-9!" >> gameLoop st pl
   where
+
+    r = \x -> x
+    
     aux :: Int -> Player -> Board -> Board
     aux po pl b = makeMove b (pl,po)
 
