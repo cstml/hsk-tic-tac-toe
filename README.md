@@ -3,8 +3,6 @@
 - Here's anothe functional implementation of TicTacToe I've bashed out for
   fun. This time in Haskell
   
-- One downside of it is that the 
-
 ## How to run
 
 - If you have cabal:
