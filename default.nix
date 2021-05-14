@@ -17,7 +17,7 @@ mkDerivation {
   license = "unknown";
   inherit ghc;
   installPhase = ''
-    $ghc/bin/ghc-8.8.4 ./Main.hs
+    $ghc/bin/ghc ./Main.hs
     mv ./Main $out
   '';
 }
